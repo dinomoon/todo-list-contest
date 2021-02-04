@@ -1,0 +1,149 @@
+/* reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+/* common */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+input[type=text] {
+  font-size: 1rem;
+  width: 40%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  background-color:#343a40;
+  color: #fff;
+  padding: 10px 12px;
+  border-radius: 4px;
+  outline: none;
+}
+
+/* JavaScript에서 관리 */
+
+.none {
+  display: none;
+}
+
+/* body */
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* container */
+
+.container {
+  max-width: 1028px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#clock {
+  margin: 2rem 0;
+}
+
+#greeting {
+  margin-bottom: 1.5rem;
+}
+
+#name-form,
+#todo-form {
+  margin-bottom: 1rem;
+}
+
+#weather {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* bc-wrap */
+.bc-wrap {
+  display: none;
+  position: absolute;
+  left: calc(50% - 50px);
+  top: calc(50% - 50px);
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+/* todo-board */
+.todo-board-wrap {
+  display: flex;
+  justify-content: space-around;
+}
+
+.todo-board-wrap > section {
+  width: 300px;
+  min-height: 300px;
+  border: 1px solid;
+}
+
+#todo-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  cursor: pointer;
+  border-bottom: 1px solid #000;
+}
+
+#todo-list li:hover {
+  background-color: #ddd;
+}
+
+#todo-list li span:first-child {
+  margin-left: 1rem;
+}
+
+#todo-list li span:last-child {
+  margin-right: 1rem;
+}
+
+#todo-list li i {
+  font-size: 1.4rem;
+}
+
+.todo-board-wrap .hold {
+  border: solid 5px #000;
+}
+
+.todo-board-wrap .hovered {
+  background-color: #ced4da;
+}
+
+.todo-board-wrap .invisible {
+  display: none;
+}
+
+.todo-board-wrap .visible {
+  display: block;
+}
