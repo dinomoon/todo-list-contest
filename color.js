@@ -1,6 +1,6 @@
-const bcWrap = document.querySelector('.bc-wrap');
 const body = document.querySelector('body');
-const colorGroups = document.querySelectorAll('.color-group');
+const todoBorads = document.querySelectorAll('.todo-board');
+const bcWrap = document.querySelector('.bc-wrap');
 
 const palette = {
   gray: ['#f1f3f5', '#e9ecef', '#dee2e6', '#ced4da', '#adb5bd'],
@@ -25,30 +25,66 @@ const colorName = [
 ];
 
 const COLOR_TYPE_LENGTH = palette.gray.length;
+const DEFAULT_BACKGROUND_COLOR = palette.red[0];
+const DEFAULT_BEFORE_COLOR = palette.yellow[0];
+const DEFAULT_ING_COLOR = palette.green[0];
+const DEFAULT_FINISH_COLOR = palette.blue[0];
 
-for (let i = 0; i < colorName.length; i++) {
-  const colorGroup = document.createElement('section');
-  colorGroup.className = 'color-group';
-  for (let j = 0; j < COLOR_TYPE_LENGTH; j++) {
-    const colorBox = document.createElement('div');
-    colorBox.className = 'color-box';
-    colorBox.style.backgroundColor = palette[colorName[i]][j];
+function makePalette() {
+  for (let i = 0; i < colorName.length; i++) {
+    const colorGroup = document.createElement('section');
+    colorGroup.className = 'color-group';
+    for (let j = 0; j < COLOR_TYPE_LENGTH; j++) {
+      const colorBox = document.createElement('div');
+      colorBox.className = 'color-box';
+      colorBox.style.backgroundColor = palette[colorName[i]][j];
 
-    // click event
-    colorBox.addEventListener('click', function () {
-      body.style.backgroundColor = palette[colorName[i]][j];
-      localStorage.setItem('body-color', palette[colorName[i]][j]);
-    });
+      // click event
+      colorBox.addEventListener('click', function () {
+        body.style.backgroundColor = palette[colorName[i]][j];
+        localStorage.setItem('body-color', palette[colorName[i]][j]);
+      });
 
-    // drag event
-    colorBox.draggable = true;
-    colorBox.addEventListener('dragstart', function () {
-      selected = this;
-    });
-    colorGroup.appendChild(colorBox);
+      // drag event
+      colorBox.draggable = true;
+      colorBox.addEventListener('dragstart', function () {
+        selected = this;
+      });
+      colorGroup.appendChild(colorBox);
+    }
+    bcWrap.appendChild(colorGroup);
   }
-  bcWrap.appendChild(colorGroup);
 }
 
-const storedColor = localStorage.getItem('body-color');
-body.style.backgroundColor = storedColor;
+function setDefaultColor() {
+  // body
+  const storedColor = localStorage.getItem('body-color');
+  if (storedColor === null) {
+    body.style.backgroundColor = DEFAULT_BACKGROUND_COLOR;
+  } else {
+    body.style.backgroundColor = storedColor;
+  }
+
+  // todo board
+  const beforeColor = localStorage.getItem('before');
+  const ingColor = localStorage.getItem('ing');
+  const finishColor = localStorage.getItem('finish');
+
+  if (beforeColor === null) {
+    todoBorads[0].children[1].style.backgroundColor = DEFAULT_BEFORE_COLOR;
+  }
+
+  if (ingColor === null) {
+    todoBorads[1].children[1].style.backgroundColor = DEFAULT_ING_COLOR;
+  }
+
+  if (finishColor === null) {
+    todoBorads[2].children[1].style.backgroundColor = DEFAULT_FINISH_COLOR;
+  }
+}
+
+function init() {
+  makePalette();
+  setDefaultColor();
+}
+init();
