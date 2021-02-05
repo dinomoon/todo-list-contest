@@ -9,63 +9,66 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="style.css" />
     <title>Document</title>
   </head>
   <body>
+    <!-- container -->
     <div class="container">
-      <h1 id="clock"></h1>
-      <h2 id="greeting"></h2>
-      <!-- name-form -->
-      <form id="name-form">
-        <input type="text" placeholder="이름" />
-      </form>
-      <!-- //name-form -->
-      <!-- todo-form -->
-      <form id="todo-form">
-        <input type="text" placeholder="할 일을 입력하세요." />
-      </form>
-      <!-- //todo-form -->
-      <span id="weather"></span>
-      <!-- todo-board-wrap -->
-      <section class="todo-board-wrap">
-        <section class="todo-board" id="before">
-          <h3>시작 전</h3>
-          <ul id="todo-list"></ul>
+      <main>
+        <h1 id="clock"></h1>
+        <h2 id="greeting"></h2>
+        <!-- name-form -->
+        <form id="name-form">
+          <input type="text" placeholder="이름" />
+        </form>
+        <!-- //name-form -->
+        <!-- todo-form -->
+        <form id="todo-form">
+          <input type="text" placeholder="할 일을 입력하세요." />
+        </form>
+        <!-- //todo-form -->
+        <span id="weather"></span>
+        <!-- todo-board-wrap -->
+        <section class="todo-board-wrap">
+          <section class="todo-board" id="before">
+            <h3>시작 전</h3>
+            <ul id="todo-list"></ul>
+          </section>
+          <section class="todo-board" id="ing">
+            <h3>하는 중</h3>
+            <ul></ul>
+          </section>
+          <section class="todo-board" id="finish">
+            <h3>완료</h3>
+            <ul></ul>
+          </section>
         </section>
-        <section class="todo-board" id="ing">
-          <h3>하는 중</h3>
-          <ul id="todo-list"></ul>
-        </section>
-        <section class="todo-board" id="finish">
-          <h3>완료</h3>
-          <ul id="todo-list"></ul>
-        </section>
+        <!-- //todo-board-wrap -->
+        <!-- background color -->
+        <section class="bc-wrap"></section>
+        <!-- //background color -->
+      </main>
+      <!-- sidebar-menu -->
+      <section class="sidebar">
+        <div class="toggle">
+          <i class="fas fa-bars"></i>
+        </div>
       </section>
-      <!-- //todo-board-wrap -->
-      <!-- background color -->
-      <button id="bc-color-btn">배경색 선택하기</button>
-      <section class="bc-wrap">
-        <section class="color-group" id="gray">
-          <div class="color-box" id="gray-0"></div>
-          <div class="color-box" id="gray-1"></div>
-          <div class="color-box" id="gray-2"></div>
-          <div class="color-box" id="gray-3"></div>
-          <div class="color-box" id="gray-4"></div>
-          <div class="color-box" id="gray-5"></div>
-          <div class="color-box" id="gray-6"></div>
-          <div class="color-box" id="gray-7"></div>
-          <div class="color-box" id="gray-8"></div>
-          <div class="color-box" id="gray-9"></div>
-        </section>
-      </section>
-      <!-- //background color -->
+      <!-- //sidebar-menu -->
     </div>
+    <!-- //container -->
     <script src="clock.js"></script>
     <script src="name.js"></script>
     <script src="todo.js"></script>
     <script src="weather.js"></script>
-    <script src="background.js"></script>
+    <script src="color.js"></script>
+    <script src="sidebar.js"></script>
   </body>
 </html>
