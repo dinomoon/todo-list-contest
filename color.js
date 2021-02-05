@@ -66,9 +66,9 @@ function setDefaultColor() {
   }
 
   // todo board
-  const beforeColor = localStorage.getItem('before');
-  const ingColor = localStorage.getItem('ing');
-  const finishColor = localStorage.getItem('finish');
+  const beforeColor = localStorage.getItem('beforeColor');
+  const ingColor = localStorage.getItem('ingColor');
+  const finishColor = localStorage.getItem('finishColor');
 
   if (beforeColor === null) {
     todoBorads[0].children[1].style.backgroundColor = DEFAULT_BEFORE_COLOR;
