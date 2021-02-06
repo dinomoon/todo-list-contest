@@ -18,6 +18,16 @@
   src: url('../fonts/Binggrae.ttf');
 }
 
+@font-face {
+  font-family: 'welltoday';
+  src: url('../fonts/WellToday.ttf');
+}
+
+@font-face {
+  font-family: 'wellday';
+  src: url('../fonts/WellDay.ttf');
+}
+
 body {
   font-family: malang, 'Noto Sans KR', sans-serif;
   transition: background-color 0.5s;

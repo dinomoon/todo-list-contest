@@ -6,7 +6,7 @@
 
 .bc-wrap {
   position: absolute;
-  top: 20%;
+  top: 15%;
   right: -300px;
   z-index: 2;
   transition: right 0.5s;
@@ -90,7 +90,7 @@
 
 .font {
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #818181;
   transition: 0.3s;
   display: block;
