@@ -64,7 +64,7 @@
   color: #f1f1f1;
 }
 
-/* reset, info button */
+/* buttons */
 
 .reset {
   position: absolute;
@@ -72,18 +72,13 @@
   right: 1rem;
 }
 
-.info {
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
-}
-
 /* fonts */
 
 .fonts {
+  display: none;
   position: absolute;
   right: -200px;
-  bottom: 7%;
+  top: 20%;
   z-index: 2;
   transition: right 0.5s;
 }
@@ -109,4 +104,43 @@
 
 .current-font {
   color: #f1f1f1;
+}
+
+/* tab */
+
+.tab-menu {
+  position: absolute;
+  top: 10%;
+  margin: 0 1.5rem;
+  width: 100%;
+  border-bottom: 1px solid #343a40;
+  display: flex;
+}
+
+.tab-menu button {
+  border-radius: 0;
+  outline: none;
+  background-color: #343a40;
+}
+
+.tab-menu .current-tab {
+  background-color: #fa5252;
+}
+
+/* info-desc */
+.info-desc {
+  display: none;
+  color: #818181;
+  position: absolute;
+  right: -500px;
+  top: 20%;
+  z-index: 2;
+  transition: right 0.5s;
+  text-align: left;
+  margin: 0 2rem;
+  word-break: keep-all;
+}
+
+.info-desc li {
+  margin-bottom: 1rem;
 }
