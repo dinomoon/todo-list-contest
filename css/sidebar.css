@@ -1,12 +1,13 @@
 /* bc-wrap */
 
 .color-group {
+  display: flex;
   margin-bottom: 5px;
 }
 
 .bc-wrap {
   position: absolute;
-  top: 15%;
+  top: 17%;
   right: -300px;
   z-index: 2;
   transition: right 0.5s;
@@ -14,7 +15,6 @@
 }
 
 .color-box {
-  display: inline-block;
   width: 50px;
   height: 50px;
   border-radius: 5px;
