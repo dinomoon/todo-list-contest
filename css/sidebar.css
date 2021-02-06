@@ -11,7 +11,6 @@
   z-index: 2;
   transition: right 0.5s;
   color: #fff;
-  word-wrap: break-all;
 }
 
 .color-box {
@@ -33,6 +32,7 @@
   right: 0;
   background-color: #111;
   transition: 0.5s;
+  word-break: keep-all;
 }
 
 .sidebar.active {
@@ -43,35 +43,39 @@
   position: absolute;
   top: 0;
   right: 0;
+  font-size: 2rem;
   width: 60px;
   height: 60px;
   cursor: pointer;
 }
 
 .toggle i {
-  font-size: 2rem;
-  line-height: 60px;
-  color: #000;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
-.sidebar.active i {
+.sidebar.active .toggle {
   color: #818181;
   transition: 0.3s;
 }
 
-.sidebar.active i:hover {
+.sidebar.active .toggle:hover {
   color: #f1f1f1;
 }
 
-/* reset button */
+/* reset, info button */
 
 .reset {
-  color: #fff;
-  margin-top: 4rem;
   position: absolute;
-  right: -100px;
-  z-index: 2;
-  transition: right 0.5s;
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.info {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
 }
 
 /* fonts */
@@ -86,7 +90,7 @@
 
 .font {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 1.5rem;
   color: #818181;
   transition: 0.3s;
   display: block;

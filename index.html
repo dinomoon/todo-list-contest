@@ -54,16 +54,14 @@
         </section>
         <!-- //todo-board-wrap -->
         <!-- background color -->
-        <section class="bc-wrap">
-          <!-- <h2>드래그 앤 드랍으로 상태 보드의 색상도 바꿀 수 있어요!</h2> -->
-        </section>
+        <section class="bc-wrap"></section>
         <!-- //background color -->
         <aside class="sidebar">
           <div href="#" class="toggle">
             <i class="fas fa-bars"></i>
           </div>
-          <button class="reset">초기화</button>
           <button class="info">설명서</button>
+          <button class="reset">초기화</button>
           <div class="fonts">
             <h2>글씨체</h2>
             <div class="font malang">한컴말랑말랑</div>
@@ -73,6 +71,18 @@
           </div>
         </aside>
       </main>
+      <section>
+        <div id="popup" class="hide">
+          <div class="content">
+            <p>
+              1. Drag and Drop으로 todo의 상태와 색상을 바꿀 수 있어요.
+              <br />2. 색상을 클릭하면 배경색을 바꿀 수 있어요. <br />3. 맘에
+              드는 글씨체도 골라보세요.
+            </p>
+            <button class="close">닫기</button>
+          </div>
+        </div>
+      </section>
     </div>
     <!-- //container -->
     <script src="./js/clock.js"></script>
@@ -81,5 +91,6 @@
     <script src="./js/weather.js"></script>
     <script src="./js/color.js"></script>
     <script src="./js/sidebar.js"></script>
+    <script src="./js/popup.js"></script>
   </body>
 </html>

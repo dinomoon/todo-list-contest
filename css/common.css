@@ -40,7 +40,7 @@ input[type='text'] {
   font-family: 'Noto Sans KR';
   font-size: 1rem;
   min-width: 40%;
-  padding: 12px 20px;
+  padding: 0.5rem 1rem;
   margin: 8px 0;
   display: inline-block;
   border: 1px solid #fff;
@@ -55,14 +55,20 @@ input[type='text']:focus {
 
 button {
   font-family: 'Noto Sans KR';
-  cursor: pointer;
+  border: 0;
+  border-radius: 0.25rem;
+  background: #364fc7;
+  color: white;
   font-size: 1rem;
-  border: none;
-  background-color: #343a40;
-  color: #fff;
-  padding: 10px 12px;
-  border-radius: 5px;
-  outline: none;
+  line-height: 1.2;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 0.3rem 0.6rem;
+  cursor: pointer;
+}
+
+button.close {
+  padding: 0.8rem;
 }
 
 .malang {

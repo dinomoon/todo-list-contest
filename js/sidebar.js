@@ -19,8 +19,6 @@ function openNav() {
   bcWrap.style.right = '1rem';
   fontWrap.style.right = '50%';
   fontWrap.style.transform = 'translateX(50%)';
-  resetBtn.style.right = '50%';
-  resetBtn.style.transform = 'translateX(50%)';
 }
 
 function closeNav() {
@@ -28,11 +26,7 @@ function closeNav() {
   toggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
   bcWrap.style.right = '-300px';
   fontWrap.style.right = '-200px';
-  resetBtn.style.right = '-50px';
 }
-
-const a = document.querySelector('.fonts');
-console.log(a);
 
 resetBtn.addEventListener('click', (e) => {
   const real = confirm('정말 초기화하시겠어요?');
