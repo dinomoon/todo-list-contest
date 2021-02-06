@@ -1,0 +1,19 @@
+@import 'reset.css';
+@import 'header.css';
+@import 'common.css';
+@import 'todo.css';
+@import 'sidebar.css';
+
+/* JavaScript에서 관리 */
+
+.none {
+  display: none;
+}
+
+/*container */
+
+.container {
+  max-width: 1028px;
+  margin: 0 auto;
+  text-align: center;
+}

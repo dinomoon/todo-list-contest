@@ -1,0 +1,13 @@
+#clock {
+  margin: 2rem 0;
+}
+
+#greeting {
+  margin-bottom: 1.5rem;
+}
+
+#weather {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+}
