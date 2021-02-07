@@ -1,9 +1,20 @@
-#clock {
-  margin: 2rem 0;
+header .title {
+  font-size: 0;
+}
+
+#time {
+  font-size: 2rem;
+  margin: 1rem 0 0.5rem;
+  font-weight: bold;
+}
+
+#date {
+  margin-bottom: 2rem;
 }
 
 #greeting {
-  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
 }
 
 #weather {

@@ -10,6 +10,7 @@
 
 .todo-board-wrap h3 {
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .todo-board-wrap ul {
