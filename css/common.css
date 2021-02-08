@@ -53,7 +53,7 @@ input[type='text'] {
   padding: 0.5rem 1rem;
   margin: 8px 0;
   display: inline-block;
-  border: 1px solid #fff;
+  border: none;
   border-radius: 5px;
   transition: all 0.4s;
 }

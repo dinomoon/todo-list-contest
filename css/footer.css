@@ -1,0 +1,7 @@
+footer .fa-trash-alt {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1rem;
+  font-size: 4rem;
+}

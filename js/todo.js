@@ -1,6 +1,59 @@
 const todoForm = document.querySelector('#todo-form');
 const todoInput = todoForm.querySelector('input');
 const todoBoards = document.querySelectorAll('.todo-board');
+const editBtns = document.querySelectorAll('.fa-edit');
+
+const editTitle = (e) => {
+  const parent = e.target.parentNode;
+  const editBtn = e.target;
+  const text = parent.children[0].textContent;
+  parent.children[0].innerHTML = `<input type="text" value="${text}"/>`;
+
+  // checkbox 만들어서 넣기
+  const i = document.createElement('i');
+  i.className = 'far fa-check-square';
+  i.addEventListener('mouseover', function () {
+    i.className = 'fas fa-check-square';
+  });
+  i.addEventListener('mouseout', function () {
+    i.className = 'far fa-check-square';
+  });
+  i.addEventListener('click', (e) => {
+    const editText = e.target.parentNode.children[0].children[0].value;
+    console.log(parent.parentNode.id);
+    switch (parent.parentNode.id) {
+      case 'before':
+        localStorage.setItem('beforeTitle', editText);
+        break;
+      case 'ing':
+        localStorage.setItem('ingTitle', editText);
+        break;
+      case 'finish':
+        localStorage.setItem('finishTitle', editText);
+        break;
+      default:
+        return;
+    }
+    parent.children[0].innerHTML = editText;
+    editBtn.className = 'far fa-edit';
+    parent.appendChild(editBtn);
+    // checkbox 삭제
+    e.target.remove();
+  });
+  e.target.parentNode.appendChild(i);
+  // edit button 삭제
+  e.target.remove();
+};
+
+for (editBtn of editBtns) {
+  editBtn.addEventListener('click', editTitle);
+  editBtn.addEventListener('mouseover', (e) => {
+    e.target.className = 'fas fa-edit';
+  });
+  editBtn.addEventListener('mouseout', (e) => {
+    e.target.className = 'far fa-edit';
+  });
+}
 
 let before = [];
 let ing = [];
@@ -102,7 +155,7 @@ const addTodo = (type, todo) => {
 
 // drag and drop
 function dragStart() {
-  this.className += ' hold';
+  this.classList.add('hold');
   setTimeout(() => (this.className = 'invisible'), 0);
   selected = this;
   startBoardId = selected.parentNode.parentNode.id;
@@ -125,15 +178,15 @@ function dragOver(e) {
 
 function dragEnter(e) {
   e.preventDefault();
-  this.className += ' hovered';
+  this.classList.add('hovered');
 }
 
 function dragLeave() {
-  this.className = 'empty';
+  this.classList.remove('hovered');
 }
 
 function dragDrop(e) {
-  this.className = 'empty';
+  this.classList.remove('hovered');
   if (selected.className === 'color-box') {
     this.children[1].style.backgroundColor = selected.style.backgroundColor;
     localStorage.setItem(`${this.id}Color`, selected.style.backgroundColor);
@@ -197,6 +250,28 @@ const loadColors = () => {
   }
 };
 
+const loadTodoTitle = () => {
+  const beforeTitle = localStorage.getItem('beforeTitle');
+  const ingTitle = localStorage.getItem('ingTitle');
+  const finishTitle = localStorage.getItem('finishTitle');
+
+  if (beforeTitle !== null) {
+    todoBoards[0].children[0].children[0].innerText = beforeTitle;
+  } else {
+    localStorage.setItem('beforeTitle', '시작 전');
+  }
+  if (ingTitle !== null) {
+    todoBoards[1].children[0].children[0].innerText = ingTitle;
+  } else {
+    localStorage.setItem('ingTitle', '하는 중');
+  }
+  if (finishTitle !== null) {
+    todoBoards[2].children[0].children[0].innerText = finishTitle;
+  } else {
+    localStorage.setItem('finishTitle', '완료');
+  }
+};
+
 const handleTodoSubmit = (e) => {
   e.preventDefault();
   const todo = todoInput.value;
@@ -212,6 +287,7 @@ function init() {
   todoForm.addEventListener('submit', handleTodoSubmit);
   loadTodos();
   loadColors();
+  loadTodoTitle();
 }
 
 init();

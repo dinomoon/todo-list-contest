@@ -33,7 +33,6 @@ function closeNav() {
   bcWrap.style.right = '-300px';
   fontWrap.style.right = '-200px';
   infoDesc.style.right = '-500px';
-  // container.style.margin = '0 auto';
 }
 
 resetBtn.addEventListener('click', (e) => {

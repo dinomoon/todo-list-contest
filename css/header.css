@@ -18,7 +18,9 @@ header .title {
 }
 
 #weather {
+  font-family: 'Noto Sans KR';
   position: absolute;
   top: 1rem;
   left: 1rem;
+  text-align: left;
 }
