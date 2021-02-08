@@ -138,9 +138,12 @@
   transition: right 0.5s;
   text-align: left;
   margin: 0 2rem;
+  line-height: 1.5;
   word-break: keep-all;
 }
 
 .info-desc li {
+  padding-bottom: 1rem;
   margin-bottom: 1rem;
+  border-bottom: 1px solid #212529;
 }

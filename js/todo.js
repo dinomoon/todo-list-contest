@@ -163,7 +163,7 @@ const addTodo = (type, todo) => {
 
 // drag and drop
 function dragStart() {
-  this.classList.add('hold');
+  this.className = 'hold';
   setTimeout(() => (this.className = 'invisible'), 0);
   selected = this;
   startBoardId = selected.parentNode.parentNode.id;

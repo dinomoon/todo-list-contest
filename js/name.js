@@ -12,7 +12,7 @@ const saveName = (name) => {
 
 const greeting = (name) => {
   if (name === '') {
-    greetingText.innerText = `안녕하세요. 이름을 입력해주세요`;
+    greetingText.innerText = `안녕하세요. 이름을 입력해주세요.`;
   } else {
     greetingText.innerText = `${name}님 오늘 하루도 화이팅입니다!`;
   }

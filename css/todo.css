@@ -48,11 +48,11 @@
 }
 
 .todo-board-wrap .hold {
-  border: 1px solid;
+  /* border: 1px solid; */
 }
 
 .todo-board-wrap .hovered ul {
-  opacity: 0.9;
+  /* opacity: 0.8; */
 }
 
 .todo-board-wrap .invisible {
