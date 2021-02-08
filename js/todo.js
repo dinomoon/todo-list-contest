@@ -8,7 +8,6 @@ const editTitle = (e) => {
   const editBtn = e.target;
   const text = parent.children[0].textContent;
   parent.children[0].innerHTML = `<input type="text" value="${text}"/>`;
-
   // checkbox 만들어서 넣기
   const i = document.createElement('i');
   i.className = 'far fa-check-square';
@@ -18,9 +17,18 @@ const editTitle = (e) => {
   i.addEventListener('mouseout', function () {
     i.className = 'far fa-check-square';
   });
+  const input = parent.children[0].children[0];
+  if (typeof input.selectionStart == 'number') {
+    input.selectionStart = input.selectionEnd = input.value.length;
+    input.focus();
+  } else if (typeof input.createTextRange != 'undefined') {
+    input.focus();
+    var range = input.createTextRange();
+    range.collapse(false);
+    range.select();
+  }
   i.addEventListener('click', (e) => {
     const editText = e.target.parentNode.children[0].children[0].value;
-    console.log(parent.parentNode.id);
     switch (parent.parentNode.id) {
       case 'before':
         localStorage.setItem('beforeTitle', editText);
