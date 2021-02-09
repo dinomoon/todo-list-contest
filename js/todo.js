@@ -3,6 +3,18 @@ const todoInput = todoForm.querySelector('input');
 const todoBoards = document.querySelectorAll('.todo-board');
 const editBtns = document.querySelectorAll('.fa-edit');
 
+let before = [];
+let ing = [];
+let finish = [];
+let selected = null;
+let startBoardType = null;
+
+// saveTodo: local storage에 저장
+const saveTodo = (type, todos) => {
+  localStorage.setItem(type, JSON.stringify(todos));
+};
+
+// editTitle: todo board 제목 수정
 const editTitle = (e) => {
   const parent = e.target.parentNode;
   const editBtn = e.target;
@@ -63,18 +75,7 @@ for (editBtn of editBtns) {
   });
 }
 
-let before = [];
-let ing = [];
-let finish = [];
-let selected = null;
-let startBoardType = null;
-
-// local storage에 저장
-const saveTodo = (type, todos) => {
-  localStorage.setItem(type, JSON.stringify(todos));
-};
-
-// todo 삭제
+// deleteTodo: todo 삭제
 function deleteTodo(type, compare) {
   switch (type) {
     case 'before':
@@ -98,33 +99,29 @@ function deleteTodo(type, compare) {
   }
 }
 
-// 화면에 todo추가
+// addTodo: 화면에 todo추가
 const addTodo = (type, todo) => {
   const li = document.createElement('li');
   const span = document.createElement('span');
   const deleteBtn = document.createElement('i');
-  // const checkBtn = document.createElement('i');
 
   let nextId = before.length + ing.length + finish.length + 1;
   const newTodo = {
     id: nextId,
     todo,
   };
-
   span.innerText = todo;
   deleteBtn.className = 'far fa-window-close';
-  // checkBtn.className = 'far fa-check-square';
 
   // 삭제 버튼만들고 이벤트 추가
   deleteBtn.addEventListener('click', (e) => {
     const clickedBtn = e.target;
     const li = clickedBtn.parentNode;
-    const clickedBoard = li.parentNode.id;
+    const clickedBoard = li.parentNode.parentNode.id;
     li.classList.add('deleted');
     li.addEventListener('transitionend', () => {
       li.remove();
     });
-
     deleteTodo(clickedBoard, li);
   });
 
@@ -136,25 +133,8 @@ const addTodo = (type, todo) => {
     deleteBtn.className = 'far fa-window-close';
   });
 
-  // 체크 버튼만들고 이벤트 추가
-  // checkBtn.addEventListener('click', (e) => {
-  //   const clickedBtn = e.target;
-  //   const li = clickedBtn.parentNode;
-
-  //   li.classList.toggle('checked');
-  // });
-
-  // checkBtn.addEventListener('mouseover', function () {
-  //   checkBtn.className = 'fas fa-check-square';
-  // });
-
-  // checkBtn.addEventListener('mouseout', function () {
-  //   checkBtn.className = 'far fa-check-square';
-  // });
-
   // li, ul에 추가
   li.id = nextId;
-  // li.appendChild(checkBtn);
   li.appendChild(span);
   li.appendChild(deleteBtn);
   li.draggable = true;
@@ -185,6 +165,7 @@ function dragStart() {
   this.className = 'hold';
   setTimeout(() => (this.className = 'invisible'), 0);
   selected = this;
+  console.log(this);
   startBoardId = selected.parentNode.parentNode.id;
 }
 
@@ -222,10 +203,10 @@ function dragDrop(e) {
   this.children[1].append(selected);
 
   const todo = {
-    id: selected.id,
+    id: parseInt(selected.id),
     todo: selected.children[0].textContent,
   };
-
+  deleteTodo(startBoardId, selected);
   switch (this.id) {
     case 'before':
       before.push(todo);
@@ -240,7 +221,6 @@ function dragDrop(e) {
       saveTodo('finish', finish);
       break;
   }
-  deleteTodo(startBoardId, selected);
 }
 
 const loadTodos = () => {
