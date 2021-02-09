@@ -1,5 +1,9 @@
 # To-Do-List 컨테스트
 
+[금 1돈을 준다고요?](https://nomadcoders.co/community/thread/182)
+<br>
+컨테스트를 계획하고 개최해주신 니꼬와 린님에게 정말 감사합니다. 덕분에 많이 배울 수 있었습니다.
+
 ## Screenshots
 
 ![1](https://user-images.githubusercontent.com/42693257/107303091-c322c400-6ac1-11eb-8c15-5d330feb5871.png)
