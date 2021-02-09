@@ -43,6 +43,14 @@
   margin-right: 1rem;
 }
 
+.todo-board-wrap li.checked span {
+  text-decoration: line-through;
+}
+
+.todo-board-wrap li span {
+  text-align: left;
+}
+
 .todo-board-wrap li i {
   font-size: 1.4rem;
 }
