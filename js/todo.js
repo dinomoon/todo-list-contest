@@ -2,12 +2,14 @@ const todoForm = document.querySelector('#todo-form');
 const todoInput = todoForm.querySelector('input');
 const todoBoards = document.querySelectorAll('.todo-board');
 const editBtns = document.querySelectorAll('.fa-edit');
+const todoBoardsTitle = document.querySelectorAll('.todo-board .title');
 
 let before = [];
 let ing = [];
 let finish = [];
 let selected = null;
 let startBoardType = null;
+let isEditing = false;
 
 // saveTodo: local storage에 저장
 const saveTodo = (type, todos) => {
@@ -16,64 +18,97 @@ const saveTodo = (type, todos) => {
 
 // editTitle: todo board 제목 수정
 const editTitle = (e) => {
-  const parent = e.target.parentNode;
-  const editBtn = e.target;
-  const text = parent.children[0].textContent;
-  parent.children[0].innerHTML = `<input type="text" value="${text}"/>`;
-  // checkbox 만들어서 넣기
-  const i = document.createElement('i');
-  i.className = 'far fa-check-square';
-  i.addEventListener('mouseover', function () {
-    i.className = 'fas fa-check-square';
-  });
-  i.addEventListener('mouseout', function () {
-    i.className = 'far fa-check-square';
-  });
-  const input = parent.children[0].children[0];
-  if (typeof input.selectionStart == 'number') {
-    input.selectionStart = input.selectionEnd = input.value.length;
-    input.focus();
-  } else if (typeof input.createTextRange != 'undefined') {
-    input.focus();
-    var range = input.createTextRange();
-    range.collapse(false);
-    range.select();
-  }
-  i.addEventListener('click', (e) => {
-    const editText = e.target.parentNode.children[0].children[0].value;
-    switch (parent.parentNode.id) {
-      case 'before':
-        localStorage.setItem('beforeTitle', editText);
-        break;
-      case 'ing':
-        localStorage.setItem('ingTitle', editText);
-        break;
-      case 'finish':
-        localStorage.setItem('finishTitle', editText);
-        break;
-      default:
-        return;
+  if (isEditing === false) {
+    e.stopPropagation();
+    isEditing = true;
+    const titleWrap = e.target.parentNode;
+    const title = titleWrap.children[0];
+    const editBtn = titleWrap.children[1];
+    const text = title.textContent;
+    const form = document.createElement('form');
+    const inputElem = document.createElement('input');
+    const buttonElem = document.createElement('button');
+
+    // form 만들어서 넣기
+    inputElem.value = text;
+    inputElem.type = 'text';
+    buttonElem.type = 'submit';
+    buttonElem.className = 'far fa-check-square';
+    buttonElem.addEventListener('mouseenter', () => {
+      buttonElem.className = 'fas fa-check-square';
+    });
+    buttonElem.addEventListener('mouseleave', () => {
+      buttonElem.className = 'far fa-check-square';
+    });
+    form.appendChild(inputElem);
+    form.appendChild(buttonElem);
+    titleWrap.innerHTML = '';
+    titleWrap.appendChild(form);
+
+    // titleSubmit: submit 함수
+    function titleSubmit(e) {
+      e.preventDefault();
+      const todoBoardId = titleWrap.parentNode.id;
+      const editText = inputElem.value;
+      switch (todoBoardId) {
+        case 'before':
+          localStorage.setItem('beforeTitle', editText);
+          break;
+        case 'ing':
+          localStorage.setItem('ingTitle', editText);
+          break;
+        case 'finish':
+          localStorage.setItem('finishTitle', editText);
+          break;
+        default:
+          return;
+      }
+      titleWrap.innerHTML = '';
+      const h3 = document.createElement('h3');
+      h3.innerText = editText;
+      titleWrap.appendChild(h3);
+      editBtn.className = 'far fa-edit';
+      titleWrap.appendChild(editBtn);
+      isEditing = false;
     }
-    parent.children[0].innerHTML = editText;
-    editBtn.className = 'far fa-edit';
-    parent.appendChild(editBtn);
-    // checkbox 삭제
-    e.target.remove();
-  });
-  e.target.parentNode.appendChild(i);
-  // edit button 삭제
-  e.target.remove();
+
+    form.addEventListener('submit', titleSubmit);
+    editBtn.addEventListener('click', titleSubmit);
+
+    // input에 포커스 주기
+    if (typeof inputElem.selectionStart == 'number') {
+      inputElem.selectionStart = inputElem.selectionEnd =
+        inputElem.value.length;
+      inputElem.focus();
+    } else if (typeof inputElem.createTextRange != 'undefined') {
+      inputElem.focus();
+      var range = inputElem.createTextRange();
+      range.collapse(false);
+      range.select();
+    }
+  } else {
+    return;
+  }
 };
 
-for (editBtn of editBtns) {
-  editBtn.addEventListener('click', editTitle);
-  editBtn.addEventListener('mouseover', (e) => {
-    e.target.className = 'fas fa-edit';
+// todoBoardsTitle 돌면서 이벤트 추가하기
+todoBoardsTitle.forEach((todoBoardTitle) => {
+  todoBoardTitle.addEventListener('click', editTitle);
+  todoBoardTitle.addEventListener('mouseenter', (e) => {
+    if (isEditing === false) {
+      e.target.children[1].className = 'fas fa-edit';
+    } else {
+      return;
+    }
   });
-  editBtn.addEventListener('mouseout', (e) => {
-    e.target.className = 'far fa-edit';
+  todoBoardTitle.addEventListener('mouseleave', (e) => {
+    if (isEditing === false) {
+      e.target.children[1].className = 'far fa-edit';
+    } else {
+      return;
+    }
   });
-}
+});
 
 // deleteTodo: todo 삭제
 function deleteTodo(type, compare) {
