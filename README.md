@@ -1,4 +1,4 @@
-# To-Do-List 컨테스트
+# todo-list contest
 
 [금 1돈을 준다고요?](https://nomadcoders.co/community/thread/182)
 <br>
