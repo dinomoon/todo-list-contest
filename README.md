@@ -2,13 +2,18 @@
 
 [금 1돈을 준다고요?](https://nomadcoders.co/community/thread/182)
 <br>
+[Drag & Drop과 커스터마이징이 가능한 To Do List](https://nomadcoders.co/community/thread/234)
+<br><br>
 컨테스트를 계획하고 개최해주신 니꼬와 린님에게 정말 감사합니다. 덕분에 많이 배울 수 있었습니다!
+<br><br>
 
 ## Screenshots
 
 ![1](https://user-images.githubusercontent.com/42693257/107303091-c322c400-6ac1-11eb-8c15-5d330feb5871.png)
 ![2](https://user-images.githubusercontent.com/42693257/107303101-c6b64b00-6ac1-11eb-81aa-753636f0c38f.png)
 ![3](https://user-images.githubusercontent.com/42693257/107303103-c7e77800-6ac1-11eb-9354-b5e4d8614665.png)
+
+<br>
 
 ## Features
 
